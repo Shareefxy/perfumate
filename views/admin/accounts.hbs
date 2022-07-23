@@ -1,0 +1,87 @@
+<section class="my-3" style="min-height:80vh ;">
+  <div class="container ">
+<ol class="breadcrumb">
+        <li class="pr-3"><a href="/admin" style="text-decoration: none;">Home</a></li>
+        <li class="active">Accounts</li>
+    </ol>
+
+
+    <table class="table table-bordered mt-5" id="myTable">
+      <thead>
+        <tr>
+           <th scope="col">No</th>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Number</th>
+          <th scope="col"> Option</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each userData}}
+   <tr>
+          <th scope="row">{{inc @index}}</th>
+          <td>{{this.fname}} {{this.lname}}</td>
+          <td>{{this.email}}</td>
+          <td>{{this.mobilenumber}}</td>
+          <td>{{#if this.isBlocked}}
+            <button class="btn btn-primary mx-3" data-toggle="modal" data-target="#blockmodal{{this._id}}">Unblock
+            </button>
+            {{else}}
+            <button class="btn btn-danger mx-3" data-toggle="modal" data-target="#blockmodal{{this._id}}">Block
+            </button>
+
+            {{/if}}
+          </td>
+        </tr>
+        <!-- Edit User Modal -->
+        <div class="modal fade" id="blockmodal{{this._id}}" tabindex="-1" role="dialog" aria-labelledby="edit"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                {{#if this.isBlocked}}
+                <h5 class="modal-title" id="edit">Unblock user</h5>
+                {{else}}
+                <h5 class="modal-title" id="edit">Block user</h5>
+                {{/if}}
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="form-group d-flex justify-content-center">
+                  {{#if this.isBlocked}}
+                  <h4 class="h4"> Are you sure to Unblock {{this.name}}</h4>
+                  <a href="/admin/unblock-user/{{this._id}}" class="btn btn-primary ml-auto ">Unblock
+                    user</a>
+                  {{else}}
+                  <h4 class="h4"> Are you sure to block {{this.name}}</h4>
+                  <a href="/admin/block-user/{{this._id}}" class="btn btn-danger ml-auto ">Block
+                    user</a>
+                  {{/if}}
+                </div>
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+</html>
+
+<script>
+  $(function () {
+    $("myTable").on("click", function () {
+      window.location.href = "edit-product.html";
+    });
+  });
+</script>

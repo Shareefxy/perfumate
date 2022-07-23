@@ -1,0 +1,105 @@
+<style>
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+</style>
+
+
+		<!-- Start Banner Area -->
+	<section class="banner-area organic-breadcrumb">
+		<div class="container">
+			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+				<div class="col-first">
+					<h1>Confirmation</h1>
+					<nav class="d-flex align-items-center">
+						<a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
+						<a href="category.html">Confirmation</a>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Banner Area -->
+
+	<!--================Order Details Area =================-->
+	<section class="order_detail section_gap">
+		<div class="container">
+			<h1 class="title_confirmation text-center text-success">Thank you. Your order has been received.</h1>
+			<img class="center w-25"src="/user/img/banner/download" alt="" >
+			<div class="row order_d_inner">
+				
+				<div class="col-lg-4">
+					<div class="details_item">
+						<h4>Order Info</h4>
+						<ul class="list">
+						<li><a href="#"><span>Order id</span>:{{order._id}}</a></li>
+						<li><a href="#"><span>Date</span> : {{order.date}}</a></li>
+						<li><a href="#"><span>Total</span> :{{order.totalAmount}}</a></li>
+						<li><a href="#"><span>Payment method</span> : {{order.paymentMethod}}</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-4">
+					<div class="details_item">
+						<h4>Billing Address</h4>
+						<ul class="list">
+						<li><a href="#"><span>Address</span> : {{order.deliveryInfo.address}}</a></li>
+						<li><a href="#"><span>City</span> : {{order.deliveryInfo.town}}</a></li>
+						<li><a href="#"><span>state</span> : {{order.deliveryInfo.state}}</a></li>
+						<li><a href="#"><span>Postcode </span> : {{order.deliveryInfo.zip}}</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-4">
+					<div class="details_item">
+						<h4>Shipping Address</h4>
+						<ul class="list">
+						<li><a href="#"><span>Address</span> : {{order.deliveryInfo.address}}</a></li>
+						<li><a href="#"><span>City</span> : {{order.deliveryInfo.town}}</a></li>
+						<li><a href="#"><span>state</span> : {{order.deliveryInfo.state}}</a></li>
+						<li><a href="#"><span>Postcode </span> : {{order.deliveryInfo.zip}}</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="order_details_table">
+				<h2>Order Details</h2>
+				<div class="table-responsive">
+					<table class="table">
+						<thead>
+							<tr>
+								<th scope="col">Product</th>
+								<th scope="col">Quantity</th>
+								<th scope="col">Total</th>
+							</tr>
+						</thead>
+						<tbody>
+						{{#each products}}
+							<tr>
+								<td>
+									<p>{{this.product.title}}</p>
+								</td>
+								<td>
+									<h5>x {{this.quantity}}</h5>
+								</td>
+								<td>
+									<p>${{this.product.price}}.00</p>
+								</td>
+							</tr>
+							{{/each}}
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="col-md-12 text-center mt-5 pt-5">
+					<a class="btn btn-dark m-1" style="" href="/orders">My orders</a>
+					<a class="btn primary-btn -1" style="" href="/">Home</a>
+					<a class="btn btn-dark m-1 pr-5 mr-5" style="" href="/invoice/{{orderId}}">Invoice</a>
+				</div>
+		</div>
+	</section>
+	<!--================End Order Details Area =================--> 
+

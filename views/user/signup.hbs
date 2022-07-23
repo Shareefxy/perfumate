@@ -1,0 +1,80 @@
+<!-- Start Banner Area -->
+	 <section class="banner-area organic-breadcrumb">
+		<div class="container">
+			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+				<div class="col-first">
+					<h1>Login/Register</h1>
+					<nav class="d-flex align-items-center">
+						<a href="/">Home<span class="lnr lnr-arrow-right"></span></a>
+						<a href="category.html">Login/Register</a>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</section> 
+	<!-- End Banner Area -->
+
+	<!--================Login Box Area =================-->
+	<section class="login_box_area section_gap">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="login_box_img" style="margin-top:110px">
+						<img class="img-fluid" src="user/img/login.jpg" alt="">
+						<div class="hover">
+							<h4>Existing User?Log in</h4>
+							<p>by continuing,you agree to Shopee's Tems of Use and Privacy Policy </p>
+							<a class="primary-btn" href="/login">Log in</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<div class="login_form_inner "style="margin-top:110px">
+						<h3>Sign Up</h3>
+						<form class="row login_form" action="/signup" method="post" id="user-signup">
+							<div class="col-md-12 form-group">
+								<input type="text" class="form-control" id="name" name="fname" placeholder="Firstname" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'" >
+							</div>
+								<div class="col-md-12 form-group">
+								<input type="text" class="form-control" id="name" name="lname" placeholder="Lastname" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'" >
+							</div>
+                            <div class="col-md-12 form-group">
+								<input type="email" class="form-control" id="name" name="email" placeholder="Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username' " >
+							{{#if exists}}
+							<p class="text-danger">email already exist</p>
+							{{/if}}
+							</div>
+                            <div class="col-md-12 form-group">
+								<input type="tel" class="form-control" id="phonenumber" name="mobilenumber" placeholder="Enter the number" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" maxlength="10">
+							</div>
+							<div class="col-md-12 form-group">
+								<input type="password" class="form-control" id="name" name="password" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" >
+							</div>
+                            <div class="col-md-12 form-group">
+								<input type="password" class="form-control" id="name" name="repassword" placeholder="Confirm Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
+							</div>
+							
+							<div class="col-md-12 form-group">
+								<div class="create_account">
+									<input type="checkbox" id="f-option2" name="selector">
+									<label for="f-option2">Keep me logged in</label>
+								</div>
+							</div>
+							<div class="col-md-12 form-group">
+								<a>
+								<button type="submit" value="submit" class="primary-btn">Sign Up</button>
+								</a>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--================End Login Box Area =================-->
+	
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js" integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="/user/js/validation.js"></script>

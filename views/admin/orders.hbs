@@ -1,0 +1,99 @@
+<section class="my-3" style="min-height:80vh ;">
+  <div class="container ">
+<ol class="breadcrumb">
+        <li class="pr-3"><a href="/admin" style="text-decoration: none;">Home</a></li>
+        <li class="active">Orders</li>
+    </ol>
+
+
+    <table class="table table-bordered mt-5" id="myTable">
+      <thead class="thead-light">
+        <tr>
+
+          <th>No.</th>
+          <th>Date</th>
+          <th>User </th>
+          <th>Address</th>
+          <th>Total Price</th>
+          <th>items</th>
+          <th>Status</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        {{#each ordersList}}
+        <tr>
+          <td>{{inc @index}}</td>
+          <td>{{this.date}} {{this.time}}</td>
+          <td>{{this.deliveryInfo.firstname}} {{this.deliveryInfo.lastname}}</td>
+          <td>{{this.deliveryInfo.address}}</td>
+          <td>{{this.totalAmount}}</td>
+
+          <td><a href="/admin/view-order-products/{{this._id}}" class="viewPro btn">View Product</a></td>
+          <td>
+            <div class="dropdown">
+              <button class="btn btn-dark dropdown-toggle p-1" type="button" id="{{this._id}}" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false" style="height: 2em;width:7em" value="{{this.status}}"
+                onclick="statusChecker('{{this._id}}')">
+                {{this.status}}
+              </button>
+              <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="/admin/placed/{{this._id}}" onclick="changeStatus(event)"
+                  style="text-decoration: none;" id="{{this._id}}placed">Placed</a>
+                <a class="dropdown-item" href="/admin/shipped/{{this._id}}" onclick="changeStatus(event)"
+                  style="text-decoration: none;" id="{{this._id}}ship">Shipped</a>
+                <a class="dropdown-item" href="/admin/delivered/{{this._id}}" onclick="changeStatus(event)"
+                  style="text-decoration: none;" id="{{this._id}}deliver">Delivered</a>
+                <a class="dropdown-item" href="/admin/cancelled/{{this._id}}" onclick="changeStatus(event)"
+                  style="text-decoration: none;" id="{{this._id}}cancel">Cancelled</a>
+              </div>
+            </div>
+          </td>
+        </tr>
+        {{/each}}
+
+      </tbody>
+    </table>
+  </div>
+</section>
+
+
+<script>
+  $(function () {
+    $(".tm-product-name").on("click", function () {
+      window.location.href = "edit-product.html";
+    });
+  });
+</script>
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+  crossorigin="anonymous"></script>
+<script>
+  function statusChecker(orderId) {
+    console.log("llog", orderId)
+    let status = document.getElementById(orderId).value
+    console.log('ja', status)
+    if (status === 'placed') {
+      console.log("Placed")
+      document.getElementById(orderId + 'placed').style.display = "none";
+    } else if (status === 'Shipped') {
+      console.log("Shipped")
+      document.getElementById(orderId + 'placed').style.display = "none";
+      document.getElementById(orderId + 'ship').style.display = "none";
+    } else if (status === 'Delivered') {
+      document.getElementById(orderId + 'placed').style.display = "none";
+      document.getElementById(orderId + 'ship').style.display = "none";
+      document.getElementById(orderId + 'cancel').style.display = "none";
+      document.getElementById(orderId + 'deliver').style.display = "none";
+    } else if (status === 'Cancelled') {
+      document.getElementById(orderId + 'placed').style.display = "none";
+      document.getElementById(orderId + 'ship').style.display = "none";
+      document.getElementById(orderId + 'deliver').style.display = "none";
+      document.getElementById(orderId + 'cancel').style.display = "none";
+    }
+  }
+</script>
+<script>
+  $(document).ready(function () {
+    $('.dropdown-toggle').dropdown()
+  });
+</script>

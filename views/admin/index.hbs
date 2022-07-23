@@ -1,0 +1,335 @@
+<div class="container">
+    <div class="row">
+        <div class="card mt-5 ml-5" style="width: 14rem;">
+            <div class="card-body pt-5">
+                <div>
+                    <h2 class="numbers">₹ {{totalIncome}}</h2>
+                    <div class="cardName">Total Revenue</div>
+                </div>
+                <img class="card-img-top pt-2" src="/admin/img/icon/income.svg
+  " alt="Card image cap" style="width:100px ;">
+            </div>
+        </div>
+        <div class="card mt-5 ml-5" style="width: 14rem;">
+            <div class="card-body pt-5">
+                <div>
+                    <h2 class="numbers">{{usersCount}}</h2>
+                    <div class="cardName">Total Users</div>
+                </div>
+                <img class="card-img-top pt-2" src="/admin/img/icon/05ac3e9f-13c6-4fb9-a4f3-429b51037bab.svg
+  " alt="Card image cap" style="width:100px ;">
+            </div>
+        </div>
+        <div class="card mt-5 ml-5" style="width: 14rem;">
+
+            <div class="card-body pt-5">
+                <div>
+                    <h2 class="numbers"> {{productCount}}</h2>
+                    <div class="cardName">Total Products</div>
+                </div>
+                <img class="card-img-top" src="/admin/img/icon/letter-p.png
+  " alt="Card image cap" style="width:100px ;">
+            </div>
+        </div>
+        <div class="card mt-5 ml-5" style="width: 14rem;">
+
+            <div class="card-body pt-5">
+                <div>
+                    <h2 class="numbers"> {{orderCount}}</h2>
+                    <div class="cardName">Total Orders</div>
+                </div>
+                <img class="card-img-top" src="/admin/img/icon/order.png
+  " alt="Card image cap" style="width:100px ;">
+            </div>
+        </div>
+        <!--Stats charts-->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="recentOrders">
+                    <div class="card mt-5">
+                        <div class="card-body ">
+                            <div class="graphBox">
+                                <div class="box">
+                                    <canvas id="myChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Customers-->
+            <div class="col-md-6">
+                <div class="recentCustomers">
+                    <div class="card mt-5">
+                        <div class="card-body mt-5">
+                            <div class="graphBox">
+                                <div class="box">
+                                    <canvas id="earning"></canvas>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- row -->
+        {{!-- <div class="row tm-content-row mt-5">
+            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
+                <div class="tm-bg-primary-dark tm-block">
+                    <h2 class="tm-block-title">Latest Hits</h2>
+                    <canvas id="lineChart"></canvas>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
+                <div class="tm-bg-primary-dark tm-block">
+                    <h2 class="tm-block-title">Performance</h2>
+                    <canvas id="barChart"></canvas>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
+                <div class="tm-bg-primary-dark tm-block tm-block-taller">
+                    <h2 class="tm-block-title">Storage Information</h2>
+                    <div id="pieChartContainer">
+                        <canvas id="pieChart" class="chartjs-render-monitor" width="200" height="200"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
+                <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-overflow">
+                    <h2 class="tm-block-title">Recent Users</h2>
+                    <div class="tm-notification-items">
+
+
+
+
+
+
+
+
+                        <div class="media tm-notification-item">
+                            <div class="tm-gray-circle"><img src="/admin/img/notification-03.jpg" alt="Avatar Image"
+                                    class="rounded-circle"></div>
+                            {{#each newUsers}}
+                            <div class="media-body">
+                                <p class="mb-2"><b>{{this.fname}} {{this.lname}}</b> and <b>6 others</b> sent you <a
+                                        href="#" class="tm-notification-link">product updates</a>.</p>
+                                <span class="tm-small tm-text-color-secondary">6h ago.</span>
+                            </div>
+                            {{/each}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div> --}}
+        <!--Details-->
+        <section class="my-3 mt-5">
+            <div class="container ">
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="recentOrders">
+                            <div class="cardHeader">
+                                <h2>Recent Products</h2>
+                                <a href="/admin/product" class="btn btn-primary mb-3" style="float:right ;">View All</a>
+
+                            </div>
+
+                            <table class="table table-bordered mt-5" id="myTable">
+                                <thead>
+                                    <tr>
+                                        <td>No</td>
+                                        <td>Name</td>
+                                        <td>Category</td>
+                                        <td>Price</td>
+                                        <td>Status</td>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    {{#each getNewProducts}}
+                                    <tr>
+                                        <td>{{inc @index}}</td>
+                                        <td>{{this.title}}</td>
+                                        <td>{{this.category}}</td>
+                                        <td>₹ {{this.price}}</td>
+                                        {{#if this.stockout}}
+                                        <td><span class="text-danger">Out of stock</span></td>
+                                        {{else}}
+                                        <td><span class="text-success">In stock</span></td>
+                                        {{/if}}
+
+                                    </tr>
+                                    {{/each}}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!--Customers-->
+                    <div class="col-md-3">
+                        <div class="recentCustomers">
+                            <div class="cardHeader">
+                                <h2>Recent Users</h2>
+                            </div>
+                            <div class="card" style="width: 18rem;">
+
+                                <div class="card-body">
+                                    <table>
+                                        <tbody>
+                                            {{#each newUsers}}
+                                            <tr>
+                                                <td width="60px">
+                                                    <div class="imgBox"><img style="width:50px;"
+                                                            src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png"
+                                                            alt="#"></div>
+                                                </td>
+                                                <td>
+                                                    <p>{{this.fname}} {{this.lname}}</p>
+                                                </td>
+                                            </tr>
+                                            {{/each}}
+
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="detail mt-5">
+                    <div class="recentOrder" style="background-color:aliceblue ;">
+                        <div class="cardHeader mt-3 pt-3">
+                            <h1>Recent Orders</h1>
+                            <a href="/admin/product" class="btn btn-primary mb-3" style="float:right ;">View All</a>
+                        </div>
+                        <div class="table-responsive-sm">
+                            <table class="table table-bordered" id="myTable">
+                            <thead class="thead-light">
+                                <tr>
+
+                                    <th>No.</th>
+                                    <th>Date</th>
+                                    <th>User </th>
+                                    <th>Address</th>
+                                    <th>Total Price</th>
+                                    <th>items</th>
+                                    <th>Status</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each newOrders}}
+                                <tr>
+                                    <td>{{inc @index}}</td>
+                                    <td>{{this.date}}</td>
+                                    <td>{{this.deliveryInfo.firstname}} {{this.deliveryInfo.lastname}}</td>
+                                    <td>{{this.deliveryInfo.address}}</td>
+                                    <td>{{this.totalAmount}}</td>
+
+                                    <td><a href="/admin/view-order-products/{{this._id}}" class="viewPro btn">View
+                                            Product</a></td>
+                                    <td><span class="text-success">{{this.status}}</span></td>
+                                </tr>
+                                {{/each}}
+
+                            </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        </html>
+
+
+
+        <div class="row">
+            <div class="col">
+                <p class="text-white mt-5 mb-5">Welcome back, <b>Admin</b></p>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+</div>
+
+<script>
+    function statusChecker(orderId) {
+        console.log("llog", orderId)
+        let status = document.getElementById(orderId).value
+        console.log('ja', status)
+        if (status === 'placed') {
+            console.log("Placed")
+            document.getElementById(orderId + 'placed').style.display = "none";
+        } else if (status === 'Shipped') {
+            console.log("Shipped")
+            document.getElementById(orderId + 'placed').style.display = "none";
+            document.getElementById(orderId + 'ship').style.display = "none";
+        } else if (status === 'Delivered') {
+            document.getElementById(orderId + 'placed').style.display = "none";
+            document.getElementById(orderId + 'ship').style.display = "none";
+            document.getElementById(orderId + 'cancel').style.display = "none";
+            document.getElementById(orderId + 'deliver').style.display = "none";
+        } else if (status === 'Cancelled') {
+            document.getElementById(orderId + 'placed').style.display = "none";
+            document.getElementById(orderId + 'ship').style.display = "none";
+            document.getElementById(orderId + 'deliver').style.display = "none";
+            document.getElementById(orderId + 'cancel').style.display = "none";
+        }
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
+<script type="text/javascript">
+
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['COD', 'Razorpay'],
+            datasets: [{
+                label: 'Payment methods',
+                data: [{{ paymentMethods }}],
+            backgroundColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)'
+            ],
+        }]
+    },
+        options: {
+        responsive: true,
+    },
+    
+    });
+    var earning = document.getElementById('earning').getContext('2d');
+    var myChart = new Chart(earning, {
+        type: 'bar',
+        data: {
+            labels: ['Placed', 'Shipped', 'Delivered', 'Cancelled',],
+            datasets: [{
+                label: 'Order Status',
+                data: [{{ getAllStatus }}],
+            backgroundColor: [
+                'rgba(255, 206, 86, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(60, 170, 70, 1)',
+                'rgba(255, 0, 0, 1)',
+            ],
+        }]
+    },
+        options: {
+        responsive: true,
+    }
+    });
+</script>
+<script>
+  $(document).ready(function () {
+    $('#myTable').DataTable();
+  });
+</script>

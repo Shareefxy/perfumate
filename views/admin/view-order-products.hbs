@@ -1,0 +1,40 @@
+<style>
+    .card {
+        margin: 0 auto; /* Added */
+        float: none; /* Added */
+        margin-bottom: 10px; /* Added */
+}
+</style>
+<section>
+  <h1 class="text-center mt-5 pt-5" >Product Details</h1>
+
+    <div class="container">
+        <ol class="breadcrumb">
+        <li class="pr-3"><a href="/admin" style="text-decoration: none;">Home</a></li>
+        <li class="active">Orders</li>
+    </ol>
+        <div class="row">
+      {{#each products}}
+            <div class="col-md-3 p-5" style="padding-left: 100px;">
+                      
+                <div class="card pl-5 ml-5 " style="width:500px">
+                    
+                    
+                    <div class="card-body">
+                        <img class="card-img-top "src="/product/{{this.product._id}}1.jpg" alt="card img top" style="height: 20rem;">
+                        <h5 class="card-title">{{this.product.title}}</h5>
+                        <p class="card-text">Rs:{{this.product.price}}</p>
+                        <h5>Quantity:</h5><p class="card-text">{{this.quantity}}</p>
+                        
+                        <h5>Description</h5>
+                        <p class="card-text">{{this.product.description}}</p>
+                    </div>
+                    
+                </div>
+                 
+            </div>
+           {{/each}}
+        </div>
+    </div> 
+ </section>
+

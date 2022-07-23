@@ -1,0 +1,101 @@
+<!-- Start Banner Area -->
+<section class="banner-area organic-breadcrumb">
+    <div class="container">
+        <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+            <div class="col-first">
+                <h1>My Orders</h1>
+                <nav class="d-flex align-items-center">
+                    <a href="/">Home<span class="lnr lnr-arrow-right"></span></a>
+                    <a href="/view-products">Cart</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Banner Area -->
+
+<!--================Cart Area =================-->
+<section>
+    <div class="container mt-5">
+        <div class="cart_inner">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Date</th>
+                            <th> Address</th>
+                            <th scope="row">Mobile</th>
+                            <th scope="col">E-mail</th>
+                            <th scope="col">Amount</th>
+                            <th scope="col">Payment</th>
+                            <th>Status</th>
+                      {{#each orders}}
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+
+                            <div class="media">
+                                <div class="d-flex">
+                                    <img src="img/cart.jpg" alt="">
+                                </div>
+                                <div class="media-body">
+                                    <p>{{this._id}}</p>
+                                </div>
+                            </div>
+
+
+                            <td scope="col">
+                                <h5>{{this.date}}{{this.time}}</h5>
+                            </td>
+                            <td scope="col">
+                                <h5>{{this.deliveryInfo.address}}
+                                    {{this.deliveryInfo.zip}}
+                                    {{this.deliveryInfo.town}}</h5>
+                            </td>
+                            <td scope="col">
+                                <h5>{{this.deliveryInfo.number}}</h5>
+                            </td>
+                            <td scope="col">
+                                <h5>{{this.deliveryInfo.email}}</h5>
+                            </td>
+                            <td>
+                                <h5>{{this.totalAmount}}</h5>
+                            </td>
+                            <td>
+                                <h5>
+                                    {{this.paymentMethod}}
+                                </h5>
+                            </td>
+                            <td>
+                                <h5>
+                                    {{this.status}}
+                                </h5>
+                            </td>
+                            {{!-- <td>
+                                <div class="product_count">
+                                    <input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:"
+                                        class="input-text qty">
+                                    <button
+                                        onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
+                                        class="increase items-count" type="button"><i
+                                            class="lnr lnr-chevron-up"></i></button>
+                                    <button
+                                        onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
+                                        class="reduced items-count" type="button"><i
+                                            class="lnr lnr-chevron-down"></i></button>
+                                </div>
+                            </td> --}}
+                            <td>
+                                <a href="/view-order-products/{{this._id}}" class="btn primary-btn">view products</a>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================End Cart Area =================-->'

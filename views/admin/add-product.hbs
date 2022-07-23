@@ -1,0 +1,113 @@
+<div class="container tm-mt-big tm-mb-big">
+  <div class="row">
+    <div class="col-xl-9 col-lg-10 col-md-12 col-sm-12 mx-auto">
+      <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
+        <div class="row">
+          <div class="col-12">
+            <h2 class="tm-block-title d-inline-block">Add Product</h2>
+          </div>
+        </div>
+        <div class="row tm-edit-product-row">
+          <div class="col">
+            <form action="/admin/add-product" class="tm-edit-product-form" method="post" enctype="multipart/form-data">
+              <div class="form-group mb-3">
+                <label for="title">Title<Title></Title>
+                </label>
+                <input id="name" name="title" type="text" class="form-control validate" required />
+              </div>
+              <div class="form-group mb-3">
+                <label name="description" for="description">Description</label>
+                <textarea name="description" class="form-control validate" rows="3" required></textarea>
+              </div>
+              <div class="form-group mb-3">
+                <td>
+                  <label for="category" class="text-white ">Category</label>
+                  <select name="type" class="custom-select tm-select-accounts" id="occassion">
+
+                    <option selected>Type</option>
+                    <option value="Men">Men</option>
+                    <option value="Women">Women</option>
+                    <option value="Unisex">Unisex</option>
+                   
+                  </select>
+                </td>
+              </div>
+              <div class="form-group ">
+                <label for="category">Brands</label>
+                <select name="category" class="custom-select tm-select-accounts " id="category">
+                  {{#each category}}
+                  <option>{{this.name}}</option>
+                  {{/each}}
+                </select>
+              </div>
+              <div class="form-group mt-3 col-xs-12 ">
+                <label for="stock">Price
+                </label>
+                <input id="stock" name="price" type="number" class="form-control validate text-white" placeholder=""
+                  required />
+              {{!-- </div>
+              <label for="date" class="text-white">published :
+              </label>
+              <input id="stock" name="published" type="date" class="form-control validate text-white text-white "
+                placeholder="" required />
+          </div> --}}
+          <div class="form-group mt-3 col-xs-12 ">
+            <label for="stock">Units In Stock
+            </label>
+
+            <input id="stock" name="stock" type="number" class="form-control validate text-white" placeholder="quantity"
+              required />
+          </div>
+
+          <label for="" class="text-white mt-3">Image</label>
+          <input type="file" name="Image" class="form-control" multiple><br><br>
+          {{!-- <div class="mt-5 col-md-6">
+            <label for="">IMAGE 1</label>
+            <img src="" alt="" style="width: 100px; height:auto" id="imgview1">
+            <input type="file" name="image1" id="file1" class="form-control" onchange="return fileValidation1()">
+          </div>
+          <div class="mt-5 col-md-6">
+            <label for="">IMAGE 2</label>
+            <img src="" alt="" style="width: 100px; height:auto" id="imgview2">
+            <input type="file" name="image2" id="file2" class="form-control" onchange="return fileValidation2()">
+          </div>
+          <div class="mt-5 col-md-6">
+            <label for="">IMAGE 3</label>
+            <img src="" alt="" style="width: 100px; height:auto" id="imgview3">
+            <input type="file" name="image3" id="file3" class="form-control" onchange="return fileValidation3()">
+          </div>
+          <div class="mt-5 col-md-6">
+            <label for="">IMAGE 4</label>
+            <img src="" alt="" style="width: 100px; height:auto" id="imgview4">
+            <input type="file" name="image4" id="file4" class="form-control" onchange="return fileValidation4()">
+          </div> --}}
+
+        </div>
+
+
+        <div class="col-16 mt-4">
+          <button type="submit" class="btn btn-primary btn-block text-uppercase">Add Product Now</button>
+        </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+
+
+</div>
+</div>
+</div>
+
+
+<script>
+  $(function () {
+    $("#expire_date").datepicker();
+  });
+</script>
+</body>
+
+</html>

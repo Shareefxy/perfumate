@@ -1,0 +1,114 @@
+ <style>
+  .card {
+        margin: 0 auto; /* Added */
+        float: none; /* Added */
+        margin-bottom: 10px; /* Added */
+}
+</style>
+<!-- Start Banner Area -->
+
+<!-- End Banner Area -->
+<div class="container mt-5 pt-5">
+    <center>
+        <h3>Invoice</h3>
+    </center>
+    <div class="row mt-5 pt-5" >
+        <button onclick="generatePDF()" class="btn btn-success mb-2 ml-auto mr-5">Download as PDF</button>
+        <div class="col-12 ">
+            <div class="card_invoice" style="width:auto ;border:1px solid" id="invoice">
+                <div class="card-body p-0">
+                    <div class="row p-5">
+                        <div class="col-md-6">
+                            <h2>Perfumate</h2>
+                        </div>
+
+                        <div class="col-md-6 text-right">
+                            <p class="font-weight-bold mb-1">Invoice #{{order._id}}</p>
+                            <p class="text-muted">Due to:{{order.date}}</p>
+                        </div>
+                    </div>
+
+                    <hr class="my-2">
+
+                    <div class="row pb-5 p-5">
+                        <div class="col-md-6">
+                            <p class="font-weight-bold mb-4">Client Information</p>
+                            <p class="mb-1">{{order.deliveryInfo.FirstName}} {{order.deliveryInfo.LastName}}</p>
+
+                            <p class="mb-1">{{order.deliveryInfo.address}}</p>
+                            <p class="mb-1">{{order.deliveryInfo.town}}</p>
+                            <p class="mb-1">{{order.deliveryInfo.state}}</p>
+                        </div>
+
+                        <div class="col-md-6 text-right">
+                            <p class="font-weight-bold mb-4">Payment Details</p>
+                            <p class="mb-1"><span class="text-muted">Payment Type: </span> {{order.paymentMethod}}</p>
+                            <p class="mb-1"><span class="text-muted">Name: </span>{{order.deliveryInfo.firstname}}
+                                {{order.deliveryInfo.lastname}}</p>
+                        </div>
+                    </div>
+
+                    <div class="row pr-5 pl-5 mb-5">
+                        <div class="col-md-12" style="overflow-x:auto;">
+                            <table class="table" id="invoice">
+                                <thead>
+                                    <tr>
+                                        <th class="border-0 text-uppercase small font-weight-bold">No</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">Item</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">Type</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">Quantity</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">Unit Cost</th>
+                                        <th class="border-0 text-uppercase small font-weight-bold">Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {{#each products}}
+                                    <tr>
+                                        <td>{{inc @index}}</td>
+                                        <td>{{this.product.title}}</td>
+                                        <td>{{this.product.category}}</td>
+                                        <td>{{this.quantity}}</td>
+                                        <td>₹{{this.product.price}}</td>
+                                        <td>₹{{this.subtotal}}</td>
+                                    </tr>
+                                    {{/each}}
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="d-flex flex-row-reverse bg-dark text-white p-4">
+                        <div class="py-3 px-5 text-right">
+                            <div class="mb-2">Grand Total</div>
+                            <div class="h2 font-weight-light">₹{{order.totalAmount}}</div>
+                        </div>
+
+                        <div class="py-3 px-5 text-right">
+                            <div class="mb-2">Discount</div>
+                            {{#if order.product.catOfferPercentage}}
+                            <div class="h2 font-weight-light">₹{{product.catOfferPercentage}}</div>
+                            {{else}}
+                            <div class="h2 font-weight-light"></div>
+                            {{/if}}
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
+    integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    function generatePDF() {
+        // Choose the element that our invoice is rendered in.
+        const element = document.getElementById('invoice');
+        // Choose the element and save the PDF for our user.
+        html2pdf().from(element).save();
+    }
+</script>

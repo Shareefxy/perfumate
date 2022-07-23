@@ -1,0 +1,249 @@
+<style>
+    .actived {
+        background: #fd7e14;
+        color: white;
+    }
+
+    .actived:hover {
+        background: #fd7e14;
+        color: white;
+    }
+
+    .kms {
+        background: #fd7e14;
+    }
+
+    .kms:hover {
+        background: #fd7e14;
+    }
+
+    /* Profile container */
+    .profile {
+        margin: 20px 0;
+    }
+
+    /* Profile sidebar */
+    .profile-sidebar {
+        padding: 20px 0 10px 0;
+        background: #fff;
+    }
+
+    .profile-userpic img {
+        float: none;
+        margin: 0 auto;
+        width: 120px;
+        height: 120px;
+        -webkit-border-radius: 50% !important;
+        -moz-border-radius: 50% !important;
+        border-radius: 50% !important;
+    }
+
+    .profile-usertitle {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .profile-usertitle-name {
+        color: #5a7391;
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 7px;
+    }
+
+    .profile-usertitle-job {
+        text-transform: uppercase;
+        color: #5b9bd1;
+        font-size: 12px;
+        font-weight: 600;
+        margin-bottom: 15px;
+    }
+
+    .profile-userbuttons {
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .profile-userbuttons .btn:last-child {
+        margin-right: 0px;
+    }
+
+    .profile-usermenu {
+        margin-top: 30px;
+    }
+
+    .profile-usermenu ul li {
+        border-bottom: 1px solid #f0f4f7;
+    }
+
+    .profile-usermenu ul li:last-child {
+        border-bottom: none;
+    }
+
+    .profile-usermenu ul li a {
+        color: #93a3b5;
+        font-size: 14px;
+        font-weight: 400;
+    }
+
+    .profile-usermenu ul li a i {
+        margin-right: 8px;
+        font-size: 14px;
+    }
+
+    .profile-usermenu ul li a:hover {
+        background-color: #fafcfd;
+        color: #5b9bd1;
+    }
+
+    .profile-usermenu ul li.active {
+        border-bottom: none;
+    }
+
+    .profile-usermenu ul li.active a {
+        color: #5b9bd1;
+        background-color: #f6f9fb;
+        border-left: 2px solid #5b9bd1;
+        margin-left: -2px;
+    }
+
+    /* Profile Content */
+    .profile-content {
+        padding: 20px;
+        background: #fff;
+        min-height: 460px;
+    }
+
+    div .scroll {
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+        text-align: justify;
+    }
+</style>
+<div class="container" style="padding-top:200px;">
+    <div class="row">
+        <div class="col-md-3 ">
+            <div class="profile-sidebar">
+                <div class="list-group ">
+                    <a href="#" class="list-group-item list-group-item-action actived">PROFILE</a>
+                    <a href="/my-orders" class="list-group-item list-group-item-action">My Orders</a>
+                    <a href="/change-password" class="list-group-item list-group-item-action">Change Password</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9 scroll">
+            <div class="card" style="height:837px; width:820px">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>My Profile</h4>
+                            <hr>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <form method="post" action="/edit-profile" id="edit-profile"
+                            onsubmit="return submitFormProfile(this);">
+                            <div class="form-group row">
+                                <label for="name" class="col-4 col-form-label">First name</label>
+                                <div class="col-8">
+                                    <input id="fname" name="fname" value="{{user.fname}}"
+                                        placeholder="Name" class="form-control here" type="text" disabled>
+                                </div>
+                            </div>
+                             <div class="form-group row">
+                                <label for="name" class="col-4 col-form-label">Last name</label>
+                                <div class="col-8">
+                                    <input id="lname" name="lname" value="{{user.lname}}"
+                                        placeholder="Name" class="form-control here" type="text" disabled>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="email" class="col-4 col-form-label">Mobile</label>
+                                <div class="col-8">
+                                    <input id="mobilenumber" name="mobilenumber" value="{{user.mobilenumber}}" placeholder="Mobile"
+                                        class="form-control here" required="required"
+                                        onkeypress="return isNumber(event)" maxlength="10" type="tel" disabled>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="email" class="col-4 col-form-label">Email</label>
+                                <div class="col-8">
+                                    <input id="email" name="email" value="{{user.email}}" placeholder="Email"
+                                        class="form-control here" required="required" type="text" disabled>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="offset-4 col-8">
+                                    <a onclick="editProfile('{{user._id}}')"
+                                        style="text-decoration: none; color: white;" type="" id="submit"
+                                        class="btn  kms">Edit
+                                        Profile</a>
+                                    <button type="submit" class="btn  kms" id="btn"
+                                        style="display: none;">Update</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="container ml-2 mb-5 " style="width:1000px ;">
+                    <h3>Address</h3>
+                <div class="row ">
+                        {{#each address}}
+                        <div class="col-md-3 mt-5 alert border-warning mr-2 card" style="cursor: pointer;">
+
+                            <div class="col-md-12 d-flex flex-column" style="height: fit-content;">
+
+                                <h6 class="">{{this.fname}} {{this.lname}}</h6>
+                                <p class="">{{this.address}},{{this.town}},{{this.state}}-{{this.zip}}<br>Ph : {{this.number}}</p>
+                                <div class=" mt-auto ">
+                                    <a class="btn  kms mt-auto " href="/edit-address/{{this._id}}"
+                                        style="width: fit-content;">
+                                        Edit
+                                    </a>
+                                    <a class="btn btn-danger mt-auto" href="/delete-address/{{this._id}}"
+                                        style="width: fit-content; color: white;" name="{{this.brand}}"
+                                        onclick="deleteAddress(event)">
+                                        Delete
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                        {{/each}}
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+</div>
+
+{{!-- Script for edit profile --}}
+<script>
+    function editProfile(userId) {
+        document.getElementById('fname').disabled = false
+        document.getElementById('lname').disabled = false
+        document.getElementById('mobilenumber').disabled = false
+        document.getElementById('email').disabled = false
+        document.getElementById('submit').style.display = "none"
+        document.getElementById('btn').style.display = "block"
+    }
+    var loadFile = function (event) {
+        var image = document.getElementById("output");
+        image.src = URL.createObjectURL(event.target.files[0]);
+    };
+</script>
+<script>
+    function isNumber(evt) {
+        evt = (evt) ? evt : window.event;
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            return false;
+        }
+        return true;
+    }
+</script>
+<script>
+
+</script>
