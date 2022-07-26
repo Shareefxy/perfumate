@@ -7,80 +7,53 @@
                 <h1>Wishlist</h1>
                 <nav class="d-flex align-items-center">
                     <a href="/">Home<span class="lnr lnr-arrow-right"></span></a>
-                    <a href="/cart">wishlist</a>
+                    <a href="/wishlist">wishlist</a>
                 </nav>
             </div>
         </div>
     </div>
 </section>
-<!-- End Banner Area -->
-{{!-- <div class="container">
-<div class="table-responsive-sm">
-  <table class="table">
-    <thead>
-    <tr>
-      <th scope="col"><h4>No</h4></th>
-      <th scope="col"><h4>Image</h4></th>
-      <th scope="col"><h4>Title</h4></th>
-      <th scope="col"><h4>Price</h4></th>
-      <th scope="col"><h4>Action</h4></th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each products}}
-    <tr>
-      <th scope="row">{{inc @index}}</th>
-             <td class="w-25">
-              <img src= class="img-fluid img-thumbnail"
-                style="width:100px; height:100px" alt="">
-            </td>
-      <td><h5>{{this.product.title}}</h5></td>
-      <td>{{this.product.price}}</td>
-      <td><a onclick="addToCart('{{this.product._id}}')"  class="social-info">
-        <button class="button button5 btn-success" style="border-radius:40%;">Add to cart</button> 
-										</a></td>
-            <td><a class="pt-3"> <span class="addToCartIcon material-icons" style="background: rgb(255,99,71);"
-                            onclick="deleteWish('{{this._id}}','{{this.product._id}}')">
-                            delete
-                        </span> </td>
-            </td>
-    </tr>
-    {{/each}}
-  </tbody>
-  </table>
-</div>
-</div>
-</div> --}}
-
 <section class="latest-product-area pb-40 category-list">
-  <div class="container">
-    <h1 class="ml-5 pl-3 mt-3">My Wishlist</h1>
-				<div class="row">
-					<!-- single product -->
+  <div class="col-md-12 mt-3">
+      <div class="container">
+        <h1>My Wishlist</h1>
+        <div class="row mt-3">
           
-					<!-- single product -->
-					{{#each products}}
-					<div class="pl-5 ml-2 ">
-						<div class="single-product pl-5">
-						<a href="/product/{{this._id}}">
-						<img  class="img-fluid drift-demo-trigger" src="/product/{{this.product._id}}1.jpg" alt="" style="width: 200px; ;"></a>
-							<div class="product-details">
-								<h6>{{this.product.title}}</h6>
-								<div class="price">
-									<h6>{{this.product.price}}</h6>
-									<h6 class="l-through">$210.00</h6>
-								</div>
-								<div class="prd-bottom">
-										<a onclick="addToCart('{{this.product._id}}')"  class="btn btn-primary" style="text-decoration:none; color:white">
-                      Add to bag
-										</a>
-										<a class="btn btn-danger" style="text-decoration:none; color:white"
-                        onclick="deleteWish('{{this._id}}','{{this.product._id}}')">Remove</a>
-								</div>
-							</div>
-						</div>
-					</div>
-					{{/each}}
+          {{#each products}}
+          
+          <div class="card ml-3" style="width:17rem; height:auto;">
+            <div class="card-body">
+                 <div class="">
+            <div class="single-product">
+              <a href="/product/{{this._id}}">
+                <img class="img-fluid drift-demo-trigger" src="/product/{{this.product._id}}1.jpg" alt=""
+                  ></a>
+              <div class="product-details">
+                <h6>{{this.product.title}}</h6>
+                <div class="price">
+                  <h6>₹{{this.product.price}}</h6>
+                  {{#if
+									catOfferPercentage}}
+									<h6 class="l-through text-danger">₹{{this.actualPrice}} </h6>
+									<h5 class="text text-success">({{this.catOfferPercentage}}%)</h5>
+									{{/if}}
+                </div>
+                <div class="prd-bottom">
+                  <a onclick="addToCart('{{this.product._id}}')" class="btn btn-success"
+                    style="text-decoration:none; color:white">
+                    Add to bag
+                  </a>
+                  <a class="btn btn-danger" style="text-decoration:none; color:white"
+                    onclick="deleteWish('{{this._id}}','{{this.product._id}}')">Remove</a>
+                </div>
+              </div>
+            </div>
           </div>
+            </div>
           </div>
+          
+          {{/each}}
+        </div>
+      </div>
+    </div>
          </section>

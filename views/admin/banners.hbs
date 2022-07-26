@@ -10,7 +10,7 @@
                 <th scope="col">No</th>
                 <th scope="col">Banner Name</th>
                 <th scope="col">Banner</th>
-                <th scope="col">Offer</th>
+                {{!-- <th scope="col">Offer</th> --}}
                 <th scope="col">Options</th>
             </tr>
       </thead>
@@ -22,7 +22,7 @@
                 <td>
                     <img style="height: 50px;width:80px" src="/banner/{{this._id}}.jpg">
                 </td>
-                <td>{{this.offer}}</td>
+                {{!-- <td>{{this.offer}}</td> --}}
                 <td><a href="/admin/edit-banner/{{this._id}}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
 
                     <a class="btn btn-danger" href="/admin/delete-banner/{{this._id}}" name="{{this.bannerName}}"
@@ -59,22 +59,22 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="inputName">Banner Name</label>
-                                    <input type="text" class="form-control" id="inputName" name="bannerName">
+                                    <input type="text" class="form-control" id="inputName" name="bannerName" required>
                                 </div>
 
 
                                 <div class="form-group col-md-6">
                                     <label for="inputDescription">Description</label>
-                                    <input type="text" class="form-control" id="inputDescription" name="description">
+                                    <input type="text" class="form-control" id="inputDescription" name="description" required>
                                 </div>
                             </div>
-                            <div class="row ">
+                            {{!-- <div class="row ">
                                 <div class="form-group mt-2 col-md-6">
                                     <label for="inputOffer">Offer details</label>
                                     <input type="text" class="form-control" id="inputOffer" name="offer">
                                 </div>
                             
-                            </div>
+                            </div> --}}
                             <div class="mt-5 col-md-6">
                                 <div class="form-group mt-2 col-md-4">
                                     <label for="exampleFormControlFile3">Banner Image</label>
@@ -101,6 +101,16 @@
 </section>
 
 </html>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+
+ <script src="https://ajax.googleapis.com/ajax/libs/
+    jquery/3.3.1/jquery.min.js">
+    </script>
+   
+ <script>
+   $("#add-banner").validate();
+</script>
 <script>
     function viewImage3(event) {
         document.getElementById('imgView3').src = URL.createObjectURL(event.target.files[0])

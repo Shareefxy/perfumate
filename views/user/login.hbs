@@ -8,8 +8,8 @@
       <div class="col-first">
         <h1>Login/Register</h1>
         <nav class="d-flex align-items-center">
-          <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
-          <a href="category.html">Login/Register</a>
+          <a href="/">Home<span class="lnr lnr-arrow-right"></span></a>
+          <a href="/login">Login/Register</a>
         </nav>
       </div>
     </div>
@@ -54,6 +54,7 @@
                 placeholder="email"
                 onfocus="this.placeholder = ''"
                 onblur="this.placeholder = 'Email'"
+                required
                 
               />
             </div>
@@ -67,20 +68,18 @@
                 placeholder="Password"
                 onfocus="this.placeholder = ''"
                 onblur="this.placeholder = 'Password'"
+                required
                
               />
             </div>
            
             <div class="col-md-12 form-group">
               <button type="submit" value="submit" class="primary-btn">Log In</button>
-               <div class="otp">
-								<a href="/otpForm" class="btn ml-1" id="yo">Login -with OTP</a>
-							</div>
-              <a href="/forgot-password">Forgot Password?</a>
+              {{!-- <a href="/forgot-password">Forgot Password?</a> --}}
         
               {{!-- <a class="btn btn-success" href="/signup">login via OTP</a> --}}
               <!-- Button trigger modal -->
- </div>
+             </div>
           </form>
         </div>
       </div>
@@ -89,19 +88,13 @@
 </section>
 <!-- Button trigger modal -->
 
-<script>
-	$(document).ready(function () {
-		$('#loginForm').validate()
-	})
-	function myFunction() {
-		var x = document.getElementById("password");
-		if (x.type === "password") {
-			x.type = "text";
-		} else {
-			x.type = "password";
-		}
-	}
-</script>
-     
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
 
-<!--================End Login Box Area =================-->
+ <script src="https://ajax.googleapis.com/ajax/libs/
+    jquery/3.3.1/jquery.min.js">
+    </script>
+   
+ <script>
+   $("#loginForm").validate();
+</script>

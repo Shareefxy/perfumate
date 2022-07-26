@@ -55,19 +55,6 @@ module.exports.placeOrder = (order, products, total) => {
       });
   });
 };
-// module.exports. getOrderList= (userId) => {
-//   return new Promise(async (resolve, reject) => {
-//       let orders = await db.get().collection(collection.ORDER_COLLECTION).find({ _id: ObjectId(userId) }).toArray()
-//       console.log(orders, "inside of get orderlist");
-//       resolve(orders)
-//   })
-// }
-// module.exports.getOrder= (orderId) => {
-//   return new Promise(async (resolve, reject) => {
-//       let orders = await db.get().collection(collection.ORDER_COLLECTION).findOne({ _id: ObjectId(orderId) })
-//       resolve(orders)
-//   })
-// }
 //get order details
 module.exports.getOrderDetails = (userId) => {
   return new Promise(async (resolve, reject) => {
@@ -88,6 +75,7 @@ module.exports.getOrderDetails = (userId) => {
         {
           $project: {
             date: "$date",
+            time: "$time",
             totalAmount: "$totalAmount",
             status: "$status",
             paymentMethod: "$paymentMethod",
@@ -107,6 +95,7 @@ module.exports.getOrderDetails = (userId) => {
         {
           $project: {
             date: 1,
+            time:1,
             status: 1,
             deliveryInfo: 1,
             totalAmount: 1,

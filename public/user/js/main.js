@@ -44,7 +44,7 @@ $(document).ready(function(){
         autoplayTimeout: 3000,
         loop:true,
         nav:true,
-        navText:["<img src='/user/img/banner/prev.png'>","<img src='/user/img/banner/next.png'>"],
+        // navText:["<img src='/user/img/banner/'>","<img src='/user/img/banner/next.png'>"],
         dots:false
     });
 
@@ -53,11 +53,11 @@ $(document).ready(function(){
     ==================================*/
     $(".active-product-area").owlCarousel({
       items:1,
-      autoplay:false,
+      autoplay:true,
       autoplayTimeout: 3000,
       loop:true,
       nav:true,
-      navText:["<img src='img/banner/prev.png'>","<img src='/user/img/banner/next.png'>"],
+      // navText:["<img src='/img/banner/'>","<img src='/user/img/banner/next.png'>"],
       dots:false
     });
 
@@ -82,7 +82,7 @@ $(document).ready(function(){
         autoplayTimeout: 5000,
         loop:true,
         nav:true,
-        navText:["<img src='img/product/prev.png'>","<img src='img/product/next.png'>"],
+        // navText:["<img src='/img/product/prev.png'>","<img src='img/product/next.png'>"],
         dots:false
     });
 

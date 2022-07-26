@@ -17,7 +17,7 @@
         </div>
         <div class="row mt-2">
           <div class="col-12">
-            <form action="/admin/Login" method="post" class="tm-login-form">
+            <form action="/admin/Login" method="post" class="tm-login-form" id="login">
               <div class="form-group">
                 <label for="email" style="color:white ;">Email</label>
                 <input name="email" type="email" class="form-control validate" id="username" required />
@@ -42,6 +42,16 @@
   </div>
 </div>
 </section>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+
+ <script src="https://ajax.googleapis.com/ajax/libs/
+    jquery/3.3.1/jquery.min.js">
+    </script>
+   
+ <script>
+   $("#login").validate();
+</script>
 <script src="/admin/js/jquery-3.3.1.min.js"></script>
 <!-- https://jquery.com/download/ -->
 <script src="/admin/js/bootstrap.min.js"></script>

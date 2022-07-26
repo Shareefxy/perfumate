@@ -1,3 +1,5 @@
+$('#loginForm').validate();
+
 // $(document).ready(function () {
 //     $('#user-signup').validate({
 //         rules: {

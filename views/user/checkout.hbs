@@ -96,18 +96,6 @@
                         <div class="col-lg-4 mt-5">
                             <div class="order_box">
                                 <h2>Your Order</h2>
-                                {{!-- <li style="list-style-type: none">
-                                    <h5 href="#">Product<span class="middle mr-5 pl-5">
-                                            Quantity</span><span>Total</span></h5>
-                                </li>
-                                {{#each products}}
-                                <ul class="list">
-
-                                    <li><a href="#">{{this.product.title}} <span class="middle">x
-                                                {{this.quantity}}</span> <span
-                                                class="last">{{this.product.price}}</span></a></li>
-                                </ul>
-                                {{/each}} --}}
 
                                 <table style="width:100%">
                                     <tr>
@@ -125,7 +113,7 @@
                                     <tr>
                                         <td>{{this.product.title}}</td>
                                         <td>{{this.quantity}}</td>
-                                        <td>{{this.product.price}}</td>
+                                        <td>₹{{this.product.price}}</td>
                                     </tr>
                                     {{/each}}
                                 </table>
@@ -183,8 +171,8 @@
                                             </tr>
                                             <tr>
                                                 <th id="newTotal" style="display: none;">New Total</th>
-                                                <td id="tdTotal" style="display: none;">₹<span id="totalOriginal"
-                                                        style="display: none;">{{total}}</span>
+                                                <td id="tdTotal" style="display: none;"><span id="totalOriginal"
+                                                        style="display: none;">₹{{total}}</span>
                                                 </td>
                                             </tr>
                                         </table>
@@ -309,14 +297,14 @@
     $('#checkout-form').submit((det) => {
 
         det.preventDefault()
-        console.log('true')
+    
         $.ajax(
             {
                 url: '/checkout',
                 method: 'post',
                 data: $('#checkout-form').serialize(),
                 success: (response) => {
-                    alert(response)
+                    
                     if (response.codSuccess) {
                         location.href = `/confirmation/${response.orderId}`
                     } else {
@@ -354,7 +342,7 @@
         rzp1.open();
     }
     function verifyPayment(payment, order) {
-        console.log(order)
+        
         $.ajax(
             {
                 url: '/verify-payment',
@@ -364,9 +352,7 @@
                 },
                 method: 'post',
                 success: (response) => {
-
                     if (response.status) {
-                        alert(response)
                         location.href = `/confirmation/${response.orderId}` 
                     } else {
                         alert('payment failed')

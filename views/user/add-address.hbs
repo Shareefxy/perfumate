@@ -4,27 +4,27 @@
         <form action="/add-new-address" class="row contact_form" id="address-form" method="post">
             <div class="col-md-6 form-group p_star">
                 <label for="name">First Name</label>
-                <input type="text" class="form-control" id="first" name="fname">
-                {{!-- <span class="placeholder"></span> --}}
+                <input type="text" class="form-control" id="first" name="fname" required>
+               
             </div>
             <div class="col-md-6 form-group p_star">
                 <label for="name">Last Name</label>
-                <input type="text" class="form-control" id="last" name="lname">
+                <input type="text" class="form-control" id="last" name="lname" required>
                 {{!-- <span class="placeholder"></span> --}}
             </div>
             <div class="col-md-12 form-group p_star">
                 <label for="number">Address</label>
-                <input type="text" class="form-control" id="add1" name="address">
+                <input type="text" class="form-control" id="add1" name="address" required>
                 {{!-- <span class="placeholder" data-placeholder="Address line 01"></span> --}}
             </div>
             <div class="col-md-12 form-group p_star">
                 <label for="number">Town/City</label>
-                <input type="text" class="form-control" id="town" name="town">
+                <input type="text" class="form-control" id="town" name="town" required>
                 {{!-- <span class="placeholder" data-placeholder="Address line 02"></span> --}}
             </div>
             <div class="col-md-12 form-group p_star">
                 <label for="number">State</label>
-                <input type="text" class="form-control" id="state" name="state">
+                <input type="text" class="form-control" id="state" name="state" required>
                 {{!-- <span class="placeholder" data-placeholder="Address line 02"></span> --}}
             </div>
 
@@ -36,11 +36,11 @@
             </div>
             <div class="col-md-6 form-group p_star">
                 <label for="number">Email</label>
-                <input type="text" class="form-control" id="email" name="email">
+                <input type="email" class="form-control" id="email" name="email" required>
             </div>
             <div class="col-md-6 form-group p_star">
                 <label for="number">Phone number</label>
-                <input type="number" class="form-control" id="number" name="number">
+                <input type="number" class="form-control" id="number" name="number" minlength="10" required>
 
             </div>
 
@@ -61,4 +61,14 @@
         }
         return true;
     }
+</script>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+
+ <script src="https://ajax.googleapis.com/ajax/libs/
+    jquery/3.3.1/jquery.min.js">
+    </script>
+   
+ <script>
+   $("#address-form").validate();
 </script>

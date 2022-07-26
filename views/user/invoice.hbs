@@ -33,8 +33,7 @@
                     <div class="row pb-5 p-5">
                         <div class="col-md-6">
                             <p class="font-weight-bold mb-4">Client Information</p>
-                            <p class="mb-1">{{order.deliveryInfo.FirstName}} {{order.deliveryInfo.LastName}}</p>
-
+                            <p class="mb-1">{{order.deliveryInfo.firstname}} {{order.deliveryInfo.lastname}}</p>
                             <p class="mb-1">{{order.deliveryInfo.address}}</p>
                             <p class="mb-1">{{order.deliveryInfo.town}}</p>
                             <p class="mb-1">{{order.deliveryInfo.state}}</p>
@@ -85,9 +84,10 @@
                         </div>
 
                         <div class="py-3 px-5 text-right">
+                            
+                            {{#if order.catOfferPercentage}}
                             <div class="mb-2">Discount</div>
-                            {{#if order.product.catOfferPercentage}}
-                            <div class="h2 font-weight-light">₹{{product.catOfferPercentage}}</div>
+                            <div class="h2 font-weight-light">₹{{order.catOfferPercentage}}</div>
                             {{else}}
                             <div class="h2 font-weight-light"></div>
                             {{/if}}

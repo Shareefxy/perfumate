@@ -7,23 +7,21 @@
 }
 </style>
 
-
-		<!-- Start Banner Area -->
-	<section class="banner-area organic-breadcrumb">
-		<div class="container">
-			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
-				<div class="col-first">
-					<h1>Confirmation</h1>
-					<nav class="d-flex align-items-center">
-						<a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
-						<a href="category.html">Confirmation</a>
-					</nav>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- End Banner Area -->
-
+<!-- Start Banner Area -->
+<section class="banner-area organic-breadcrumb">
+    <div class="container">
+        <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+            <div class="col-first">
+                <h1>Confirmation</h1>
+                <nav class="d-flex align-items-center">
+                    <a href="/">Home<span class="lnr lnr-arrow-right"></span></a>
+                    <a href="/view-products">Cart</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Banner Area -->
 	<!--================Order Details Area =================-->
 	<section class="order_detail section_gap">
 		<div class="container">
@@ -37,7 +35,7 @@
 						<ul class="list">
 						<li><a href="#"><span>Order id</span>:{{order._id}}</a></li>
 						<li><a href="#"><span>Date</span> : {{order.date}}</a></li>
-						<li><a href="#"><span>Total</span> :{{order.totalAmount}}</a></li>
+						<li><a href="#"><span>Total</span> :₹{{order.totalAmount}}</a></li>
 						<li><a href="#"><span>Payment method</span> : {{order.paymentMethod}}</a></li>
 						</ul>
 					</div>
@@ -86,10 +84,21 @@
 									<h5>x {{this.quantity}}</h5>
 								</td>
 								<td>
-									<p>${{this.product.price}}.00</p>
+									<p>₹{{this.product.price}}.00</p>
+								</td>
+								</tr>
+							{{/each}}
+							<tr>
+								<td>
+									<h4>Total</h4>
+								</td>
+								<td>
+									<h5></h5>
+								</td>
+								<td>
+									<p>₹{{order.totalAmount}}.00</p>
 								</td>
 							</tr>
-							{{/each}}
 						</tbody>
 					</table>
 				</div>

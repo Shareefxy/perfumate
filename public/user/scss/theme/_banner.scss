@@ -1,7 +1,7 @@
 /* banner area css
 ============================================================================================ */
 .banner-area {
-	background: url(../banner/62d29888a572f8667eda4ec2.jpg) center no-repeat;
+	background: url(../banner/bottle-perfume-pink-background_73741-1200.jpg) center no-repeat;
 	background-size: cover;
 	position: relative;
 	.fullscreen {
@@ -40,16 +40,16 @@
 		@media (max-width: 991px) {
 			padding-left: 0;
 		}
-		h1 {
-			font-size: 60px;
-			line-height: 66px;
-			font-weight: 700;
-			margin-bottom: 30px;
-			@media (max-width: 767px) {
-				font-size: 35px;
-				line-height: 46px;
-			}
-		}
+		// h1 {
+		// 	font-size: 60px;
+		// 	line-height: 66px;
+		// 	font-weight: 700;
+		// 	margin-bottom: 30px;
+		// 	@media (max-width: 767px) {
+		// 		font-size: 35px;
+		// 		line-height: 46px;
+		// 	}
+		// }
 		p {
 			margin: 0;
 		}

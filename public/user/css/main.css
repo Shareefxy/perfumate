@@ -1312,6 +1312,7 @@ h1, h2, h3, h4, h5, h6 {
       .breadcrumb-banner h1 {
         font-size: 30px; } }
   .breadcrumb-banner p {
+
     margin-bottom: 0;
     color: #fff; }
   .breadcrumb-banner nav a {
@@ -4554,8 +4555,8 @@ label {
     color: #ffba00; }
 
 .order_box {
-  background: #e5ecee;
-  padding: 30px; }
+  
+   }
   .order_box h2 {
     border-bottom: 1px solid #dddddd;
     font-size: 18px;

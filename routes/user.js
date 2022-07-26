@@ -83,6 +83,8 @@ router.get("/profile", verifyUserLogin, userController.myProfile);
 
 router.get("/my-orders", verifyUserLogin, userController.myOrders);
 
+router.get("/my-wishlist", verifyUserLogin, userController.myWishlist);
+
 router.post("/edit-profile", verifyUserLogin, userController.editProfile);
 
 router.get("/new-address", verifyUserLogin, userController.Address);

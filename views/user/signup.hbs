@@ -6,7 +6,7 @@
 					<h1>Login/Register</h1>
 					<nav class="d-flex align-items-center">
 						<a href="/">Home<span class="lnr lnr-arrow-right"></span></a>
-						<a href="category.html">Login/Register</a>
+						<a href="/signup">Login/Register</a>
 					</nav>
 				</div>
 			</div>
@@ -33,13 +33,13 @@
 						<h3>Sign Up</h3>
 						<form class="row login_form" action="/signup" method="post" id="user-signup">
 							<div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="name" name="fname" placeholder="Firstname" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'" >
+								<input type="text" class="form-control" id="name" name="fname" placeholder="Firstname" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'" required >
 							</div>
 								<div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="name" name="lname" placeholder="Lastname" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'" >
+								<input type="text" class="form-control" id="name" name="lname" placeholder="Lastname" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'" required >
 							</div>
                             <div class="col-md-12 form-group">
-								<input type="email" class="form-control" id="name" name="email" placeholder="Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username' " >
+								<input type="email" class="form-control" id="name" name="email" placeholder="Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username' " required >
 							{{#if exists}}
 							<p class="text-danger">email already exist</p>
 							{{/if}}
@@ -48,17 +48,10 @@
 								<input type="tel" class="form-control" id="phonenumber" name="mobilenumber" placeholder="Enter the number" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" maxlength="10">
 							</div>
 							<div class="col-md-12 form-group">
-								<input type="password" class="form-control" id="name" name="password" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" >
+								<input type="password" class="form-control" id="name" name="password" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" minlength="5" required>
 							</div>
                             <div class="col-md-12 form-group">
-								<input type="password" class="form-control" id="name" name="repassword" placeholder="Confirm Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
-							</div>
-							
-							<div class="col-md-12 form-group">
-								<div class="create_account">
-									<input type="checkbox" id="f-option2" name="selector">
-									<label for="f-option2">Keep me logged in</label>
-								</div>
+								<input type="password" class="form-control" id="name" name="repassword" placeholder="Confirm Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" minlength="5" required>
 							</div>
 							<div class="col-md-12 form-group">
 								<a>
@@ -73,8 +66,13 @@
 	</section>
 	<!--================End Login Box Area =================-->
 	
-<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-    crossorigin="anonymous"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js" integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="/user/js/validation.js"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+
+ <script src="https://ajax.googleapis.com/ajax/libs/
+    jquery/3.3.1/jquery.min.js">
+    </script>
+   
+ <script>
+   $("#user-signup").validate();
+</script>

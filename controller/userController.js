@@ -511,6 +511,27 @@ module.exports.myOrders = async (req, res, next) => {
     next(error);
   }
 };
+//get my wishlist
+module.exports.myWishlist = async (req,res,next) => {
+  try {
+    let cartCount = null;
+    if (req.session.user) {
+      cartCount = await cartController.getCartCount(req.session.user._id);
+    }
+    let products = await wishlistController.getWishlistProducts(req.session.user._id);
+    if (products.length != 0) {
+      res.render("user/my-wishlist", {
+        products,
+        cartCount,
+        user: req.session.user._id,
+      });
+    } else {
+      res.render("user/empty-wishlist", { user: req.session.user._id });
+    }
+  } catch (error) {
+    next(error);
+  }
+};
 //filter products
 module.exports.filterProduct = (req, res, next) => {
   try {
@@ -882,7 +903,9 @@ module.exports.confirmation = async (req, res, next) => {
     let orderId = req.params.id;
     console.log("order" + orderId);
     let order = await orderController.getSingleOrderDetails(orderId);
+    console.log(order);
     let products = await orderController.getOrderedProducts(orderId);
+    console.log(products);
     res.render("user/confirmation", { user, order, orderId, products });
   } catch (error) {
     next(error);
@@ -911,6 +934,7 @@ module.exports.invoice = async (req, res, next) => {
 module.exports.orderList = async (req, res,next) => {
   try {
     let orders = await orderController.getOrderDetails(req.session.user._id);
+    console.log(orders);
     let len = orders.length;
     if (len > 0) {
       res.render("user/orders-list", { user: req.session.user, orders });
@@ -1196,8 +1220,12 @@ module.exports.verifyBuyNowPayment = (req, res, next) => {
 
 //contact
 module.exports.contact = async(req,res)=>{
-
-  res.render('user/contact')
+  let user= req.session.user
+  let cartCount = null;
+  if (req.session.user) {
+    cartCount = await cartController.getCartCount(req.session.user._id);
+  }
+  res.render('user/contact',{user,cartCount})
 }
 //user logout section
 module.exports.logout = (req, res) => {

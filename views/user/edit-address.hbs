@@ -6,12 +6,12 @@
                     <form action="/edit-address" class="row contact_form" id="address-form" method="post">
                         <div class="col-md-6 form-group p_star">
                             <label for="name">First Name</label>
-                            <input type="text" class="form-control" id="first" value="{{this.address.fname}}"name="fname">
+                            <input type="text" class="form-control" id="first" value="{{this.address.fname}}"name="fname" minlength="4" required>
                             {{!-- <span class="placeholder"></span> --}}
                         </div>
                         <div class="col-md-6 form-group p_star">
                             <label for="name">Last Name</label>
-                            <input type="text" class="form-control" id="last" value="{{this.address.lname}}" name="lname">
+                            <input type="text" class="form-control" id="last" value="{{this.address.lname}}" name="lname"  required>
                             {{!-- <span class="placeholder"></span> --}}
                         </div>
                         
@@ -19,32 +19,32 @@
 
                         <div class="col-md-12 form-group p_star">
                             <label for="number">Address</label>
-                            <input type="text" class="form-control" id="add1" value="{{this.address.address}}" name="address">
+                            <input type="text" class="form-control" id="add1" value="{{this.address.address}}" name="address" minlength="4" required>
                             {{!-- <span class="placeholder" data-placeholder="Address line 01"></span> --}}
                         </div>
                         <div class="col-md-12 form-group p_star">
                             <label for="number">Town/City</label>
-                            <input type="text" class="form-control" id="town"  value="{{this.address.town}}" name="town">
+                            <input type="text" class="form-control" id="town"  value="{{this.address.town}}" name="town" required>
                             {{!-- <span class="placeholder" data-placeholder="Address line 02"></span> --}}
                         </div>
                         <div class="col-md-12 form-group p_star">
                             <label for="number">State</label>
-                            <input type="text" class="form-control" id="state" value="{{this.address.state}}"  name="state">
+                            <input type="text" class="form-control" id="state" value="{{this.address.state}}"  name="state" required>
                             {{!-- <span class="placeholder" data-placeholder="Address line 02"></span> --}}
                         </div>
 
                         <div class="col-md-12 form-group">
                             <label for="Postcode">Post code</label>
-                            <input type="number" class="form-control" id="zip" value="{{this.address.zip}}" name="zip">
+                            <input type="number" class="form-control" id="zip" value="{{this.address.zip}}" name="zip" minlength="6" required>
 
                         </div>
                         <div class="col-md-6 form-group p_star">
                             <label for="number">Email</label>
-                            <input type="text" class="form-control" id="email" value="{{this.address.email}}" name="email">
+                            <input type="email" class="form-control" id="email" value="{{this.address.email}}" name="email" required>
                         </div>
                         <div class="col-md-6 form-group p_star">
                             <label for="number">Phone number</label>
-                            <input type="number" class="form-control" id="number" value="{{this.address.number}}" name="number">
+                            <input type="number" class="form-control" id="number" value="{{this.address.number}}" name="number" minlength="10" required>
                              <input type="text" name="userId" value="{{this.address.userId}}" hidden>
                             <input type="text" name="_id" value="{{this.address._id}}" hidden>
                         </div>
@@ -62,57 +62,17 @@
 </div>
 
 
-<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
-<script>
-    $(document).ready(function () {
-        $('#address-form').validate({
-            rules: {
-               
-                first: {
-                    required: true,
-                    minlength: 4,
-                    maxlength: 15
-                },
-                last: {
-                    required: true,
-                    minlength: 4,
-                    maxlength: 15
-                },
-                email: {
-                    required: true,
-                    minlength: 10,
-                    maxlength: 50,
-                    email: true
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
 
-                },
-                add1: {
-                    required: true,
-                    minlength: 5
-                },
-                town: {
-                    required: true,
-                    minlength: 5
-                },
-                state: {
-                    required: true,
-                    number: true,
-                    minlength: 6,
-                    maxlength: 6
-                },
-                number: {
-                    required: true,
-                    number: true,
-                    minlength: 10,
-                    maxlength: 10,
-                },
-                zip: {
-                    required:true,
-                    minlength:6
-                }
-            },
-        })
-    })
+ <script src="https://ajax.googleapis.com/ajax/libs/
+    jquery/3.3.1/jquery.min.js">
+    </script>
+   
+ <script>
+   $("#address-form").validate();
 </script>
+
 <script>
     function isNumber(evt) {
         evt = (evt) ? evt : window.event;
