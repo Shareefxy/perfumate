@@ -15,8 +15,10 @@ const verifyAdminLogin = (req, res, next) => {
 router.get("/", verifyAdminLogin, adminController.home);
 
 //login
-router.get("/login", adminController.getLogin);
-router.post("/login", adminController.postLogin);
+router
+  .route("/login")
+  .get(adminController.getLogin)
+  .post(adminController.postLogin);
 
 //category management
 router.get("/category", verifyAdminLogin, adminController.categoryPage);
@@ -26,24 +28,26 @@ router.get("/delete/:id", adminController.postDelete);
 
 //product management
 router.get("/product", verifyAdminLogin, adminController.viewProduct);
-router.get("/add-product", adminController.insertProduct);
-router.get("/edit-product/:id", adminController.getEditPro);
-router.post("/edit-product/:id", verifyAdminLogin, adminController.editProduct);
-router.post("/add-product", adminController.postProduct);
+router
+  .route("/add-product")
+  .get(adminController.insertProduct)
+  .post(adminController.postProduct);
+router
+  .route("/edit-product/:id")
+  .get(adminController.getEditPro)
+  .post(verifyAdminLogin, adminController.editProduct);
 router.get("/delete-product/:id", adminController.deleteProduct);
 
 //banner management
 router.get("/banners", verifyAdminLogin, adminController.banner);
 router.post("/add-banner", adminController.postBanner);
-router.get("/edit-banner/:id", verifyAdminLogin, adminController.getEditBanner);
-router.post(
-  "/edit-banner/:id",
-  verifyAdminLogin,
-  adminController.postEditBanner
-);
+router
+  .route("/edit-banner/:id")
+  .get(verifyAdminLogin, adminController.getEditBanner)
+  .post(verifyAdminLogin, adminController.postEditBanner);
 router.get("/delete-banner/:id", verifyAdminLogin, adminController.getDelete);
+
 //order management
-//get order page
 router.get("/orders", verifyAdminLogin, adminController.getOrders);
 
 //Order Status changing----
@@ -62,18 +66,14 @@ router.get("/accounts", verifyAdminLogin, adminController.viewUsers);
 router.get("/block-user/:id", adminController.blockUser);
 //unblock user
 router.get("/unblock-user/:id", adminController.unblockUser);
+
 //Offer Management Section....
 //Category offers
-router.get(
-  "/category-offers",
-  verifyAdminLogin,
-  adminController.getCategoryOffers
-);
-router.post(
-  "/category-offers",
-  verifyAdminLogin,
-  adminController.postCategoryOffers
-);
+router
+  .route("/category-offers")
+  .get(verifyAdminLogin, adminController.getCategoryOffers)
+  .post(verifyAdminLogin, adminController.postCategoryOffers);
+
 router.get(
   "/delete-catOffer/:id",
   verifyAdminLogin,
@@ -88,8 +88,10 @@ router.get(
   verifyAdminLogin,
   adminController.deleteCoupon
 );
+
 //sales reports
 router.get("/report", verifyAdminLogin, adminController.getReports);
+
 //logout admin
 router.get("/logout", adminController.logout);
 

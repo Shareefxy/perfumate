@@ -443,7 +443,7 @@ module.exports.getDelete = (req, res, next) => {
   try {
     let id = req.params.id;
     bannerController.deleteBanner(id).then((response) => {
-      fs.unlinkSync("public/banner/" + id + ".jpg");
+      // fs.unlinkSync("public/banner/" + id + ".jpg");
       res.redirect("/admin/banners");
     });
   } catch (error) {

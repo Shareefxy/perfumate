@@ -92,7 +92,7 @@ module.exports.getHomeProducts = () => {
       .collection(collection.PRODUCT_COLLECTION)
       .find()
       .sort({ $natural: -1 })
-      .limit(4)
+      .limit(8)
       .toArray();
 
     resolve(products);
@@ -194,7 +194,7 @@ module.exports.getRelatedProducts = () => {
       .collection(collection.PRODUCT_COLLECTION)
       .find()
       .sort({ $natural: -1 })
-      .limit(6)
+      .limit(8)
       .toArray();
     resolve(related);
   });

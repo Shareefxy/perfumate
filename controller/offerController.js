@@ -4,6 +4,7 @@ const moment = require("moment");
 const {
   ObjectId
 } = require("mongodb");
+
 //get all coupons
 module.exports.getAllCoupons = () => {
   return new Promise(async (resolve, reject) => {
@@ -78,6 +79,7 @@ module.exports.addCoupon = (data) => {
     }
   });
 }),
+
 (module.exports.updateCoupon = (couponId) => {
   user = req.session.user._id
   return new Promise(async (resolve, reject) => {
@@ -95,6 +97,7 @@ module.exports.addCoupon = (data) => {
 
   });
 });
+
 module.exports.couponValidate = (data, user) => {
   return new Promise(async (resolve, reject) => {
     console.log("in coupon");
@@ -140,6 +143,7 @@ module.exports.couponValidate = (data, user) => {
     }
   });
 };
+
 module.exports.deleteCoupons = (id) => {
   return new Promise((resolve, reject) => {
     db.get()

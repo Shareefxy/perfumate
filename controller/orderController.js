@@ -9,8 +9,6 @@ require("dotenv").config();
 var instance = new Razorpay({
   key_id: process.env.RAZORPAY_KEY_ID,
   key_secret: process.env.RAZORPAY_KEY_SECRET,
-  // key_id: "rzp_test_ODvyGKpsALmP5T",
-  // key_secret: "0JhvMPNBQkKm75edpBnwdBu4",
 });
 
 //place-order
@@ -55,6 +53,7 @@ module.exports.placeOrder = (order, products, total) => {
       });
   });
 };
+
 //get order details
 module.exports.getOrderDetails = (userId) => {
   return new Promise(async (resolve, reject) => {
@@ -111,6 +110,7 @@ module.exports.getOrderDetails = (userId) => {
     resolve(orders);
   });
 };
+
 module.exports.getOrderProducts = (orderId) => {
   return new Promise(async (resolve, reject) => {
     let orderItems = await db
@@ -166,6 +166,7 @@ module.exports.getOrderProducts = (orderId) => {
     resolve(orders);
   });
 }),
+
   (module.exports.generateRazorpay = (orderId, total) => {
     return new Promise((resolve, reject) => {
       var options = {
@@ -203,6 +204,7 @@ module.exports.verifyPayment = (details) => {
     }
   });
 };
+
 module.exports.changePaymentStatus = (orderId) => {
   return new Promise((resolve, reject) => {
     db.get()
@@ -337,6 +339,7 @@ module.exports.getTotalOrders = () => {
     resolve(orders);
   });
 };
+
 //get all payment method
 module.exports.getAllMethods = () => {
   let methods = [];
@@ -371,6 +374,7 @@ module.exports.getAllMethods = () => {
     resolve(methods);
   });
 };
+
 //get all status
 module.exports.getAllStatus = () => {
   let orderStatus = [];

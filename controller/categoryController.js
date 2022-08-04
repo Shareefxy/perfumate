@@ -19,7 +19,6 @@ module.exports.viewCategory = () => {
 };
 
 //add categories
-
 module.exports.addCategory = (data) => {
   return new Promise((resolve, reject) => {
     db.get()
@@ -195,6 +194,7 @@ module.exports.addCategoryOffer = (data) => {
       }
     });
   }),
+  
   //get category offers
   (module.exports.getAllCatOffers = () => {
     return new Promise(async (resolve, reject) => {

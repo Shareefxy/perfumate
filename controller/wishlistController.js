@@ -62,6 +62,7 @@ module.exports.addToWishlist = (proId, userId) => {
     }
   });
 };
+
 //Get wishlist products for show in wishlist
 module.exports.getWishlistProducts = (userId) => {
   return new Promise(async (resolve, reject) => {
@@ -101,6 +102,7 @@ module.exports.getWishlistProducts = (userId) => {
     resolve(wishProducts);
   });
 };
+
 module.exports.deleteWishlistProduct = (wishPro) => {
   return new Promise((resolve, reject) => {
     db.get()

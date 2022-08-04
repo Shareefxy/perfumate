@@ -70,6 +70,7 @@ module.exports.addToCart = (proId, userId) => {
     }
   });
 };
+
 module.exports.getCartProducts = (userId) => {
   return new Promise(async (resolve, reject) => {
     let cartItems = await db

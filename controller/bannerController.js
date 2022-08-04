@@ -2,6 +2,7 @@ const db = require("../config/connection");
 const collection = require("../config/collection");
 const { ObjectId } = require("mongodb");
 const { NetworkContext } = require("twilio/lib/rest/supersim/v1/network");
+
 //Get banners from banner collection
 module.exports.getBanners = () => {
   return new Promise(async (resolve, reject) => {
